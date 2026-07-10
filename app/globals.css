@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/* ============================================================
+   CGR — California Garage Door Repair · Design Tokens
+   ============================================================ */
+@theme {
+  /* --- Brand color system --- */
+  --color-navy-950: #0b1630;
+  --color-navy-900: #102142;
+  --color-navy-800: #17305c;
+
+  --color-blue-primary: #2563eb;
+  --color-blue-primary-hover: #1d4ed8;
+  --color-blue-electric: #3b82f6;
+  --color-blue-tint: #eff6ff;
+
+  --color-red-emergency: #ef3f4c;
+  --color-red-emergency-hover: #d92f3c;
+
+  --color-warm-white: #f8fafc;
+  --color-pure-white: #ffffff;
+
+  --color-slate-900: #172033;
+  --color-slate-600: #5b6578;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-200: #e2e8f0;
+
+  --color-success: #16a36a;
+  --color-star: #fbbf24;
+
+  /* --- Typography --- */
+  --font-heading: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* --- Radius --- */
+  --radius-card: 22px;
+  --radius-btn: 12px;
+  --radius-input: 12px;
+
+  /* --- Shadows (soft, premium) --- */
+  --shadow-soft: 0 12px 40px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --shadow-lift: 0 20px 48px rgba(15, 23, 42, 0.12);
+  --shadow-btn: 0 8px 20px rgba(37, 99, 235, 0.25);
+  --shadow-btn-red: 0 8px 20px rgba(239, 63, 76, 0.28);
+
+  /* --- Container --- */
+  --breakpoint-3xl: 1440px;
+
+  /* --- Motion --- */
+  --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-warm-white);
+    color: var(--color-slate-900);
+    font-family: var(--font-body);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-heading);
+    color: var(--color-slate-900);
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--color-blue-electric);
+    color: #fff;
+  }
+
+  /* Visible keyboard focus (WCAG 2.2 AA) */
+  :focus-visible {
+    outline: 3px solid var(--color-blue-electric);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  a { color: inherit; text-decoration: none; }
+}
+
+@layer components {
+  .container-cgr {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+  @media (min-width: 768px) {
+    .container-cgr { padding-inline: 32px; }
+  }
+  @media (min-width: 1024px) {
+    .container-cgr { padding-inline: 40px; }
+  }
+
+  .container-wide {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+  @media (min-width: 1024px) {
+    .container-wide { padding-inline: 40px; }
+  }
+
+  /* Section vertical rhythm */
+  .section {
+    padding-block: 56px;
+  }
+  @media (min-width: 768px) { .section { padding-block: 80px; } }
+  @media (min-width: 1024px) { .section { padding-block: 112px; } }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-blue-primary);
+  }
+}
+
+/* ============================================================
+   Motion — subtle reveal + reduced motion
+   ============================================================ */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s var(--ease-out-soft), transform 0.5s var(--ease-out-soft);
+  will-change: opacity, transform;
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+  .marquee-track { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
