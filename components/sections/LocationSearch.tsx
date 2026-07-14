@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { MapPin, Search, CheckCircle2, ArrowRight, Phone } from "lucide-react";
 import { REGIONS, POPULAR_CITIES, COMPANY } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/primitives";
@@ -112,24 +113,44 @@ export function LocationSearch() {
             </div>
           </div>
 
-          {/* Abstract CA map */}
-          <div className="relative overflow-hidden rounded-[var(--radius-card)] bg-navy-950 p-6 ring-1 ring-navy-900 md:p-8">
-            <div className="absolute -right-16 -top-16 size-64 rounded-full bg-blue-primary/20 blur-3xl" />
-            <div className="relative z-10 flex h-full flex-col">
+          {/* California coverage map + technician */}
+          <div className="relative min-h-[440px] overflow-hidden rounded-[var(--radius-card)] bg-navy-950 ring-1 ring-navy-900 lg:min-h-0">
+            <Image
+              src="/images/areas-map.jpg"
+              alt="Glowing map of California showing statewide garage door service coverage"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-navy-950/90 via-navy-950/25 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-navy-950 to-transparent" />
+
+            {/* Spotlight behind technician */}
+            <div className="absolute bottom-0 right-0 z-[1] h-[85%] w-3/4 bg-[radial-gradient(ellipse_at_bottom_right,rgba(59,130,246,0.45),rgba(37,99,235,0.15)_45%,transparent_72%)]" />
+
+            {/* Technician cutout */}
+            <Image
+              src="/images/areas-tech.png"
+              alt="CGR garage door technician ready to dispatch"
+              width={620}
+              height={827}
+              className="pointer-events-none absolute -bottom-2 right-0 z-[2] h-[80%] w-auto object-contain object-bottom drop-shadow-[0_10px_40px_rgba(0,0,0,0.5)] sm:h-[86%]"
+            />
+
+            <div className="relative z-10 flex h-full flex-col p-6 md:p-8">
               <p className="eyebrow !text-blue-electric">
                 <span className="size-1.5 rounded-full bg-current" /> Statewide Coverage
               </p>
-              <h3 className="mt-3 font-heading text-2xl font-bold text-white">
+              <h3 className="mt-3 max-w-[60%] font-heading text-2xl font-bold text-white sm:max-w-[62%]">
                 One team, every California region
               </h3>
-
-              <div className="relative mx-auto my-6 flex-1">
-                <CaliforniaMap />
-              </div>
+              <p className="mt-2 max-w-[58%] text-sm text-slate-300">
+                Licensed technicians dispatched to the nearest job — day or night.
+              </p>
 
               <a
                 href={COMPANY.phoneHref}
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-white/10 font-heading font-bold text-white ring-1 ring-white/20 backdrop-blur transition hover:bg-white/15"
+                className="mt-auto inline-flex h-12 w-full items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-white/10 font-heading font-bold text-white ring-1 ring-white/20 backdrop-blur transition hover:bg-white/15"
               >
                 <Phone className="size-[18px]" /> Talk to dispatch — {COMPANY.phone}
               </a>
@@ -138,36 +159,5 @@ export function LocationSearch() {
         </div>
       </div>
     </section>
-  );
-}
-
-/* Stylized California silhouette with regional markers */
-function CaliforniaMap() {
-  const markers = [
-    { x: 30, y: 18, label: "Bay Area" },
-    { x: 44, y: 30, label: "Sacramento" },
-    { x: 52, y: 46, label: "Central Valley" },
-    { x: 70, y: 72, label: "Los Angeles" },
-    { x: 82, y: 88, label: "San Diego" },
-  ];
-  return (
-    <svg viewBox="0 0 100 120" className="mx-auto h-64 w-auto" role="img" aria-label="Map of California service regions">
-      <path
-        d="M14 6 L34 4 L40 20 L46 26 L44 40 L58 60 L70 66 L78 78 L92 96 L86 110 L74 112 L64 96 L52 84 L40 74 L30 58 L22 40 L16 24 Z"
-        fill="rgba(59,130,246,0.12)"
-        stroke="rgba(59,130,246,0.55)"
-        strokeWidth="1.2"
-        strokeLinejoin="round"
-      />
-      {markers.map((m) => (
-        <g key={m.label}>
-          <circle cx={m.x} cy={m.y} r="3.4" fill="#3B82F6" stroke="#fff" strokeWidth="1.1" />
-          <circle cx={m.x} cy={m.y} r="6.5" fill="none" stroke="#3B82F6" strokeWidth="0.8" opacity="0.5" />
-          <text x={m.x + 6} y={m.y + 2.5} fill="#CBD5E1" fontSize="4.4" fontWeight="600">
-            {m.label}
-          </text>
-        </g>
-      ))}
-    </svg>
   );
 }

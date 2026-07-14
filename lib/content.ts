@@ -41,28 +41,28 @@ export const BRANDS = [
 
 export const VALUE_PROPS = [
   {
-    icon: "Clock",
+    img: "/images/icon-247.png",
     title: "24/7 Statewide Service",
     body: "Available across Southern California, the Bay Area, Sacramento, the Central Valley, Central Coast, Northern California and Eastern California.",
     featured: true,
   },
   {
-    icon: "Zap",
+    img: "/images/icon-sameday.png",
     title: "Same-Day Emergency Response",
     body: "We dispatch the nearest available technician, with arrival times starting from approximately one hour depending on location.",
   },
   {
-    icon: "Truck",
+    img: "/images/icon-trucks.png",
     title: "Fully Stocked Service Trucks",
     body: "Our vehicles carry parts for most leading brands, allowing us to complete up to 90% of repairs during the first visit.",
   },
   {
-    icon: "Building2",
+    img: "/images/icon-rescom.png",
     title: "Residential & Commercial",
     body: "Repairs, installations, opener upgrades, spring replacement and complete garage door systems.",
   },
   {
-    icon: "FileCheck",
+    img: "/images/icon-estimate.png",
     title: "Transparent Upfront Estimates",
     body: "You receive a written, no-obligation estimate before work begins, with no hidden regional markups.",
   },
