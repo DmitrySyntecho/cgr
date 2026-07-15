@@ -13,15 +13,19 @@ const trustRow = [
 export function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden bg-navy-950">
-      {/* Background photo */}
-      <Image
-        src="/images/hero-home.jpg"
-        alt="Modern California home with a large contemporary garage door in warm daylight"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center"
-      />
+      {/* Background video */}
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/images/hero-home.jpg"
+        aria-hidden="true"
+      >
+        <source src="/videos/crew-la.mp4" type="video/mp4" />
+      </video>
       {/* Navy gradient overlay for legibility (left → right) */}
       <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/25" />
       <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-navy-950/30" />
