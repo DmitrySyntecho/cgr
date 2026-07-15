@@ -9,17 +9,16 @@ export function HowItWorks() {
   return (
     <section className="section bg-white">
       <div className="container-cgr">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-center">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-stretch">
           {/* Photo */}
-          <Reveal className="order-2 lg:order-1">
-            <div className="relative overflow-hidden rounded-[var(--radius-card)] shadow-[var(--shadow-soft)]">
+          <Reveal className="order-2 lg:order-1 lg:h-full">
+            <div className="relative h-full min-h-[420px] overflow-hidden rounded-[var(--radius-card)] shadow-[var(--shadow-soft)]">
               <Image
-                src="/images/svc-maintenance.jpg"
-                alt="CGR technician performing an on-site garage door inspection with a tablet"
-                width={1200}
-                height={900}
+                src="/images/howitworks.jpg"
+                alt="CGR technician showing a written garage door estimate to a homeowner on a tablet"
+                fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
-                className="h-full w-full object-cover"
+                className="object-cover"
               />
               <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 rounded-2xl bg-white/95 p-4 backdrop-blur shadow-[var(--shadow-card)]">
                 <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-success/12 text-success">

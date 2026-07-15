@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Play, Quote } from "lucide-react";
 import { TRUST_STATS, REVIEWS, VIDEO_TESTIMONIALS } from "@/lib/content";
-import { Icon } from "@/lib/icons";
 import { SectionHeading, Stars } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -22,8 +21,10 @@ export function SocialProof() {
               key={s.label}
               className="flex flex-col items-center rounded-2xl bg-white p-4 text-center ring-1 ring-slate-200 shadow-[var(--shadow-card)]"
             >
-              <Icon name={s.icon} className="size-5 text-blue-primary" />
-              <span className="mt-2 font-heading text-lg font-extrabold text-slate-900">{s.value}</span>
+              <span className="relative size-12">
+                <Image src={s.img} alt="" fill sizes="48px" className="object-contain drop-shadow-[0_6px_12px_rgba(37,99,235,0.2)]" />
+              </span>
+              <span className="mt-1.5 font-heading text-lg font-extrabold text-slate-900">{s.value}</span>
               <span className="text-xs font-medium text-slate-500">{s.label}</span>
             </div>
           ))}
@@ -45,11 +46,16 @@ export function SocialProof() {
               </div>
               <Quote className="mt-4 size-6 text-slate-200" aria-hidden />
               <p className="mt-2 flex-1 leading-relaxed text-slate-700">{r.text}</p>
-              <div className="mt-5 border-t border-slate-200 pt-4">
-                <p className="font-heading font-bold text-slate-900">{r.name}</p>
-                <p className="text-sm text-slate-500">
-                  {r.city} · <span className="text-blue-primary">{r.job}</span>
-                </p>
+              <div className="mt-5 flex items-center gap-3 border-t border-slate-200 pt-4">
+                <span className="relative size-11 shrink-0 overflow-hidden rounded-full ring-2 ring-white shadow-[var(--shadow-card)]">
+                  <Image src={r.avatar} alt={r.name} fill sizes="44px" className="object-cover" />
+                </span>
+                <div>
+                  <p className="font-heading font-bold text-slate-900">{r.name}</p>
+                  <p className="text-sm text-slate-500">
+                    {r.city} · <span className="text-blue-primary">{r.job}</span>
+                  </p>
+                </div>
               </div>
             </Reveal>
           ))}

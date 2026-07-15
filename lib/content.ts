@@ -215,17 +215,18 @@ export const CA_PROBLEMS = [
 ];
 
 export const TRUST_STATS = [
-  { value: "5.0", label: "Google Rating", icon: "Star" },
-  { value: "5.0", label: "Yelp Rating", icon: "Star" },
-  { value: "20 yrs", label: "Experience", icon: "Award" },
-  { value: "#1077353", label: "CSLB Licensed", icon: "BadgeCheck" },
-  { value: "$2M", label: "Liability Coverage", icon: "ShieldCheck" },
-  { value: "100%", label: "Satisfaction Guarantee", icon: "ThumbsUp" },
+  { value: "5.0", label: "Google Rating", img: "/images/ic-google.png" },
+  { value: "5.0", label: "Yelp Rating", img: "/images/ic-yelp.png" },
+  { value: "20 yrs", label: "Experience", img: "/images/ic-experience.png" },
+  { value: "#1077353", label: "CSLB Licensed", img: "/images/ic-cslb.png" },
+  { value: "$2M", label: "Liability Coverage", img: "/images/ic-liability.png" },
+  { value: "100%", label: "Satisfaction Guarantee", img: "/images/ic-satisfaction.png" },
 ];
 
 export const REVIEWS = [
   {
     name: "Marisol R.",
+    avatar: "/images/avatar-marisol.jpg",
     city: "Long Beach, CA",
     rating: 5,
     source: "Google",
@@ -234,6 +235,7 @@ export const REVIEWS = [
   },
   {
     name: "Andrew P.",
+    avatar: "/images/avatar-andrew.jpg",
     city: "San Jose, CA",
     rating: 5,
     source: "Yelp",
@@ -242,6 +244,7 @@ export const REVIEWS = [
   },
   {
     name: "Denise K.",
+    avatar: "/images/avatar-denise.jpg",
     city: "Fresno, CA",
     rating: 5,
     source: "Google",
@@ -250,6 +253,7 @@ export const REVIEWS = [
   },
   {
     name: "Robert M.",
+    avatar: "/images/avatar-robert.jpg",
     city: "San Diego, CA",
     rating: 5,
     source: "Yelp",
@@ -258,6 +262,7 @@ export const REVIEWS = [
   },
   {
     name: "Priya S.",
+    avatar: "/images/avatar-priya.jpg",
     city: "Oakland, CA",
     rating: 5,
     source: "Google",
@@ -266,6 +271,7 @@ export const REVIEWS = [
   },
   {
     name: "Chris & Dana T.",
+    avatar: "/images/avatar-chris.jpg",
     city: "Sacramento, CA",
     rating: 5,
     source: "Google",
