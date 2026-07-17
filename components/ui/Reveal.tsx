@@ -21,12 +21,10 @@ export function Reveal({
     if (!node) return;
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          io.disconnect();
-        }
+        // Bidirectional: reveal on enter, collapse again on leave (scroll up/down)
+        setVisible(entry.isIntersecting);
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -12% 0px" }
     );
     io.observe(node);
     return () => io.disconnect();
