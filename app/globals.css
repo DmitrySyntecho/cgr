@@ -140,18 +140,25 @@
 /* ============================================================
    Motion — subtle reveal + reduced motion
    ============================================================ */
-/* Bidirectional reveal — blocks rise + settle when they scroll into view
-   and collapse back down when they scroll out (both directions).
-   Driven by an IntersectionObserver that toggles .is-visible. */
+/* Bidirectional reveal — blocks assemble from the sides when scrolling down
+   (left-half from the left, right-half from the right) and drop in from the
+   top when scrolling up. Driven by an IntersectionObserver.
+   Body has overflow-x:hidden so the horizontal offset never adds scroll. */
 .js .reveal {
-  opacity: 0;
-  transform: translateY(56px) scale(0.96);
   transition: opacity 0.6s var(--ease-out-soft), transform 0.6s var(--ease-out-soft);
   will-change: opacity, transform;
 }
+.js .reveal.from-side {
+  opacity: 0;
+  transform: translateX(var(--rx, -72px)) scale(0.97);
+}
+.js .reveal.from-top {
+  opacity: 0;
+  transform: translateY(-56px) scale(0.97);
+}
 .js .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: none;
 }
 
 /* ============================================================

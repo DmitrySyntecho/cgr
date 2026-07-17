@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
+type State = "side" | "top" | "visible";
+
 export function Reveal({
   children,
   delay = 0,
@@ -14,15 +16,27 @@ export function Reveal({
   className?: string;
 }) {
   const ref = useRef<HTMLElement | null>(null);
-  const [visible, setVisible] = useState(false);
+  const [state, setState] = useState<State>("side");
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
+
+    // Horizontal direction: elements on the left half slide in from the left,
+    // elements on the right half slide in from the right — assembling from the sides.
+    const rect = node.getBoundingClientRect();
+    const fromLeft = rect.left + rect.width / 2 <= window.innerWidth / 2;
+    node.style.setProperty("--rx", fromLeft ? "-72px" : "72px");
+
     const io = new IntersectionObserver(
       ([entry]) => {
-        // Bidirectional: reveal on enter, collapse again on leave (scroll up/down)
-        setVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setState("visible");
+        } else {
+          // Left via the top edge (scrolling up reveals it from the top);
+          // otherwise it enters from the side (scrolling down).
+          setState(entry.boundingClientRect.top < 0 ? "top" : "side");
+        }
       },
       { threshold: 0.15, rootMargin: "0px 0px -12% 0px" }
     );
@@ -30,11 +44,14 @@ export function Reveal({
     return () => io.disconnect();
   }, []);
 
+  const stateClass =
+    state === "visible" ? "is-visible" : state === "top" ? "from-top" : "from-side";
+
   const Comp = Tag as React.ElementType;
   return (
     <Comp
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
+      className={`reveal ${stateClass} ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}
