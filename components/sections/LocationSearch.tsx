@@ -5,6 +5,7 @@ import Image from "next/image";
 import { MapPin, Search, CheckCircle2, ArrowRight, Phone } from "lucide-react";
 import { REGIONS, POPULAR_CITIES, COMPANY } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/primitives";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function LocationSearch() {
   const [zip, setZip] = useState("");
@@ -28,7 +29,7 @@ export function LocationSearch() {
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:items-stretch">
           {/* ZIP finder + regions */}
-          <div className="rounded-[var(--radius-card)] bg-warm-white p-6 ring-1 ring-slate-200 md:p-8">
+          <Reveal className="rounded-[var(--radius-card)] bg-warm-white p-6 ring-1 ring-slate-200 md:p-8">
             <form onSubmit={onCheck} noValidate>
               <label htmlFor="zip" className="block font-heading text-sm font-bold text-slate-900">
                 Check your ZIP code
@@ -111,10 +112,10 @@ export function LocationSearch() {
                 View all California service areas <ArrowRight className="size-4" />
               </a>
             </div>
-          </div>
+          </Reveal>
 
           {/* California coverage map + technician */}
-          <div className="relative min-h-[440px] overflow-hidden rounded-[var(--radius-card)] bg-navy-950 ring-1 ring-navy-900 lg:min-h-0">
+          <Reveal className="relative min-h-[440px] overflow-hidden rounded-[var(--radius-card)] bg-navy-950 ring-1 ring-navy-900 lg:min-h-0">
             <Image
               src="/images/areas-map.jpg"
               alt="Glowing map of California showing statewide garage door service coverage"
@@ -155,7 +156,7 @@ export function LocationSearch() {
                 <span className="relative z-[2] inline-flex items-center gap-2"><Phone className="size-[18px]" /> Talk to dispatch — {COMPANY.phone}</span>
               </a>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

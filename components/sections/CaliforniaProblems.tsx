@@ -6,6 +6,7 @@ import { CheckCircle2, AlertTriangle, Wrench, Plus } from "lucide-react";
 import { CA_PROBLEMS } from "@/lib/content";
 import { Icon } from "@/lib/icons";
 import { SectionHeading } from "@/components/ui/primitives";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function CaliforniaProblems() {
   const [active, setActive] = useState(0);
@@ -23,7 +24,7 @@ export function CaliforniaProblems() {
         />
 
         {/* Desktop tabs */}
-        <div className="mt-12 hidden lg:block">
+        <Reveal className="mt-12 hidden lg:block">
           <div role="tablist" aria-label="California regions" className="flex flex-wrap justify-center gap-2">
             {CA_PROBLEMS.map((p, i) => (
               <button
@@ -63,10 +64,10 @@ export function CaliforniaProblems() {
 
             <ProblemDetail problem={problem} />
           </div>
-        </div>
+        </Reveal>
 
         {/* Mobile accordion */}
-        <div className="mt-10 space-y-3 lg:hidden">
+        <Reveal className="mt-10 space-y-3 lg:hidden">
           {CA_PROBLEMS.map((p, i) => {
             const isOpen = openMobile === i;
             return (
@@ -94,7 +95,7 @@ export function CaliforniaProblems() {
               </div>
             );
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

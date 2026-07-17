@@ -5,6 +5,7 @@ import Image from "next/image";
 import { MapPin, ArrowUpRight } from "lucide-react";
 import { PROJECTS, PROJECT_FILTERS } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/primitives";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function RecentProjects() {
   const [filter, setFilter] = useState("All");
@@ -39,7 +40,8 @@ export function RecentProjects() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((p) => (
-            <article
+            <Reveal
+              as="article"
               key={p.title}
               className="overflow-hidden rounded-[var(--radius-card)] bg-white ring-1 ring-slate-200 shadow-[var(--shadow-card)]"
             >
@@ -72,7 +74,7 @@ export function RecentProjects() {
                 </dl>
                 <p className="mt-3 border-t border-slate-200 pt-3 text-sm text-slate-700">{p.result}</p>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
