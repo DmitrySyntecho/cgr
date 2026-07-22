@@ -77,15 +77,27 @@ export function Hero() {
           </ul>
 
           {/* CTA + framed 15% offer (replaces the estimate button) */}
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-stretch">
-            <a
-              href={COMPANY.phoneHref}
-              className="btn-shine btn-stroke shine-fill-red inline-flex h-[58px] items-center justify-center gap-2 rounded-[var(--radius-btn)] px-7 font-heading text-base font-bold text-white shadow-[var(--shadow-btn-red)]"
-            >
-              <span className="relative z-[2] inline-flex items-center gap-2">
-                <Phone className="size-5" aria-hidden /> Call Now — {COMPANY.phone}
-              </span>
-            </a>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-start">
+            {/* Call button + same-day strip (strip matches button width) */}
+            <div className="flex flex-col gap-3">
+              <a
+                href={COMPANY.phoneHref}
+                className="btn-shine btn-stroke shine-fill-red inline-flex h-[58px] items-center justify-center gap-2 rounded-[var(--radius-btn)] px-7 font-heading text-base font-bold text-white shadow-[var(--shadow-btn-red)]"
+              >
+                <span className="relative z-[2] inline-flex items-center gap-2">
+                  <Phone className="size-5" aria-hidden /> Call Now — {COMPANY.phone}
+                </span>
+              </a>
+
+              {/* Animated same-day arrows, full width of the Call button */}
+              <div className="flex w-full items-center justify-between gap-2">
+                <CurvedArrow className="arrow-bob size-10 shrink-0 text-star" />
+                <span className="flex-1 text-center font-heading text-[17px] font-extrabold italic text-star">
+                  Same-Day Service Available
+                </span>
+                <CurvedArrow className="arrow-bob size-10 shrink-0 -scale-x-100 text-star" />
+              </div>
+            </div>
 
             <CouponButton className="group inline-flex h-[58px] items-center gap-3 rounded-[var(--radius-btn)] border-2 border-dashed border-star/70 bg-white/5 px-4 backdrop-blur-sm transition hover:border-star hover:bg-white/10">
               <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-star/15 text-star transition group-hover:scale-110">
@@ -96,15 +108,6 @@ export function Hero() {
                 <span className="block text-xs font-semibold text-slate-200">Any Repair · New Customers</span>
               </span>
             </CouponButton>
-          </div>
-
-          {/* Animated same-day arrows pointing to the Call button */}
-          <div className="mt-4 flex items-center justify-center gap-2 sm:justify-start">
-            <CurvedArrow className="arrow-bob size-11 shrink-0 text-star" />
-            <span className="font-heading text-lg font-extrabold italic text-star">
-              Same-Day Service Available
-            </span>
-            <CurvedArrow className="arrow-bob size-11 shrink-0 -scale-x-100 text-star" />
           </div>
 
           <p className="mt-4 flex items-center justify-center gap-2 text-sm text-slate-300 sm:justify-start">

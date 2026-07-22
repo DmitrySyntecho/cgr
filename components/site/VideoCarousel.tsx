@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 
 /**
  * Vertical (9:16) auto-scrolling video carousel with prev/next navigation.
@@ -40,8 +40,14 @@ export function VideoCarousel() {
           <div
             key={n}
             data-card
-            className="relative aspect-[9/16] w-[240px] shrink-0 snap-center overflow-hidden rounded-[var(--radius-card)] bg-navy-950 ring-1 ring-slate-200 shadow-[var(--shadow-card)] sm:w-[260px]"
+            className="relative aspect-[9/16] w-[240px] shrink-0 snap-center overflow-hidden rounded-[var(--radius-card)] bg-gradient-to-b from-navy-900 to-navy-950 ring-1 ring-slate-200 shadow-[var(--shadow-card)] sm:w-[260px]"
           >
+            {/* Placeholder shown until the real vertical video is added */}
+            <span className="absolute inset-0 grid place-items-center">
+              <span className="grid size-14 place-items-center rounded-full bg-white/10 text-white/80 ring-1 ring-white/20">
+                <Play className="size-6 translate-x-0.5 fill-current" />
+              </span>
+            </span>
             <video
               className="absolute inset-0 h-full w-full object-cover"
               autoPlay
