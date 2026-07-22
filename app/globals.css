@@ -249,6 +249,15 @@
   animation: btn-pan 3.6s linear infinite;
 }
 
+/* Same-day arrows gentle bob (uses `translate` so it doesn't clash with scaleX flip) */
+@keyframes arrow-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+.arrow-bob {
+  animation: arrow-bob 1.3s ease-in-out infinite;
+}
+
 .marquee-track {
   animation: marquee 32s linear infinite;
 }

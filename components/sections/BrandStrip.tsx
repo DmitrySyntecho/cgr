@@ -5,23 +5,14 @@ const BRAND_LOGOS = [
   "hormann", "liftmaster", "linear", "marantec", "sommer", "wayne-dalton",
 ];
 
-// Logos that are white/light and need a dark chip to stay visible.
-const DARK_CHIP = new Set([
-  "amarr", "wayne-dalton", "linear", "genie", "chamberlain", "marantec", "liftmaster",
-]);
-
 function Chip({ b }: { b: string }) {
   return (
-    <div
-      className={`flex h-20 w-40 shrink-0 items-center justify-center rounded-2xl px-5 ${
-        DARK_CHIP.has(b) ? "bg-navy-950" : "bg-white"
-      }`}
-    >
+    <div className="flex h-16 w-36 shrink-0 items-center justify-center px-4">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/images/brands/${b}.svg`}
         alt={`${b.replace("-", " ")} garage door brand`}
-        className="max-h-10 w-auto max-w-[110px] object-contain"
+        className="max-h-8 w-auto max-w-[110px] object-contain"
         loading="lazy"
       />
     </div>

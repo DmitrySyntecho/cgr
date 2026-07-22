@@ -4,7 +4,7 @@ import { TRUST_STATS, REVIEWS } from "@/lib/content";
 import { SectionHeading, Stars } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
 import { City } from "@/components/site/City";
-import { VimeoTestimonials } from "@/components/site/VimeoTestimonials";
+import { VideoCarousel } from "@/components/site/VideoCarousel";
 
 export function SocialProof() {
   return (
@@ -37,7 +37,7 @@ export function SocialProof() {
           <h3 className="text-center font-heading text-2xl font-bold text-slate-900">
             Video Testimonials From Our Clients
           </h3>
-          <VimeoTestimonials />
+          <VideoCarousel />
         </div>
 
         {/* Written reviews */}

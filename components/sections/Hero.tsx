@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone, ShieldCheck, BadgeCheck, Clock, Star, Tag } from "lucide-react";
+import { Phone, ShieldCheck, BadgeCheck, Star, Tag } from "lucide-react";
 import { COMPANY } from "@/lib/content";
 import { City } from "@/components/site/City";
 import { CouponButton } from "@/components/site/CouponButton";
@@ -17,7 +17,6 @@ const trustRow = [
   { icon: BadgeCheck, label: `CSLB Licensed #1077353` },
   { icon: ShieldCheck, label: "Fully Insured" },
   { icon: Star, label: "20 Years of Experience" },
-  { icon: Clock, label: "Same-Day Service" },
 ];
 
 export function Hero() {
@@ -75,33 +74,35 @@ export function Hero() {
             ))}
           </ul>
 
-          {/* CTAs — calls only */}
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          {/* CTA + framed 15% offer (replaces the estimate button) */}
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-stretch">
             <a
               href={COMPANY.phoneHref}
-              className="btn-shine btn-stroke shine-fill-red inline-flex h-[54px] items-center justify-center gap-2 rounded-[var(--radius-btn)] px-7 font-heading text-base font-bold text-white shadow-[var(--shadow-btn-red)]"
+              className="btn-shine btn-stroke shine-fill-red inline-flex h-[58px] items-center justify-center gap-2 rounded-[var(--radius-btn)] px-7 font-heading text-base font-bold text-white shadow-[var(--shadow-btn-red)]"
             >
               <span className="relative z-[2] inline-flex items-center gap-2">
                 <Phone className="size-5" aria-hidden /> Call Now — {COMPANY.phone}
               </span>
             </a>
-            <a
-              href={COMPANY.phoneHref}
-              className="btn-shine btn-stroke inline-flex h-[54px] items-center justify-center gap-2 rounded-[var(--radius-btn)] border-2 border-white/60 px-7 font-heading text-base font-bold text-white backdrop-blur-sm hover:bg-white/10"
-            >
-              <span className="relative z-[2] inline-flex items-center gap-2">
-                <ShieldCheck className="size-5" aria-hidden /> Call for a Free Estimate
+
+            <CouponButton className="group inline-flex h-[58px] items-center gap-3 rounded-[var(--radius-btn)] border-2 border-dashed border-star/70 bg-white/5 px-4 backdrop-blur-sm transition hover:border-star hover:bg-white/10">
+              <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-star/15 text-star transition group-hover:scale-110">
+                <Tag className="size-5" aria-hidden />
               </span>
-            </a>
+              <span className="text-left leading-tight">
+                <span className="block font-heading text-lg font-extrabold text-star">15% OFF</span>
+                <span className="block text-xs font-semibold text-slate-200">Any Repair · New Customers</span>
+              </span>
+            </CouponButton>
           </div>
 
-          {/* Same-day arrows pointing to the Call button */}
+          {/* Animated same-day arrows pointing to the Call button */}
           <div className="mt-4 flex items-center justify-center gap-2 sm:justify-start">
-            <CurvedArrow className="size-8 shrink-0 text-star" />
+            <CurvedArrow className="arrow-bob size-8 shrink-0 text-star" />
             <span className="font-heading text-lg font-extrabold italic text-star">
               Same-Day Service Available
             </span>
-            <CurvedArrow className="size-8 shrink-0 -scale-x-100 text-star" />
+            <CurvedArrow className="arrow-bob size-8 shrink-0 -scale-x-100 text-star" />
           </div>
 
           <p className="mt-4 flex items-center justify-center gap-2 text-sm text-slate-300 sm:justify-start">
@@ -109,7 +110,7 @@ export function Hero() {
             Technicians available now · Weekend and holiday service
           </p>
 
-          {/* Ratings + promo */}
+          {/* Ratings */}
           <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             {[
               { name: "Google", ...COMPANY.google },
@@ -130,10 +131,6 @@ export function Hero() {
                 </span>
               </div>
             ))}
-
-            <CouponButton className="flex w-full items-center justify-center gap-2 rounded-full bg-red-emergency px-4 py-2 text-sm font-bold text-white shadow-[var(--shadow-btn-red)] transition hover:bg-red-emergency-hover sm:inline-flex sm:w-auto">
-              <Tag className="size-4 shrink-0" aria-hidden /> {COMPANY.promo}
-            </CouponButton>
           </div>
         </div>
       </div>
