@@ -4,6 +4,15 @@ import { COMPANY } from "@/lib/content";
 import { City } from "@/components/site/City";
 import { CouponButton } from "@/components/site/CouponButton";
 
+function CurvedArrow({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" fill="none" className={className} aria-hidden>
+      <path d="M5 28 C 4 13 12 6 22 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      <path d="M22 6 L15.5 5 M22 6 L23 12.5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 const trustRow = [
   { icon: BadgeCheck, label: `CSLB Licensed #1077353` },
   { icon: ShieldCheck, label: "Fully Insured" },
@@ -45,12 +54,7 @@ export function Hero() {
 
       <div className="container-wide relative z-10 flex min-h-[600px] items-start pb-16 pt-[calc(76px+35px)] sm:min-h-[720px] sm:items-center sm:pb-28 sm:pt-32 md:min-h-[760px] lg:min-h-[800px]">
         <div className="max-w-2xl text-center sm:text-left">
-          <p className="eyebrow !text-blue-electric mb-5">
-            <span className="size-1.5 rounded-full bg-current" />
-            California Statewide Garage Door Service
-          </p>
-
-          <h1 className="font-heading font-extrabold tracking-[-0.03em] text-white text-[clamp(38px,6vw,64px)] leading-[1.06]">
+          <h1 className="mt-2 font-heading font-extrabold tracking-[-0.03em] text-white text-[clamp(38px,6vw,64px)] leading-[1.06]">
             Garage Door Repair in <City fallback="California" />
           </h1>
 
@@ -89,6 +93,15 @@ export function Hero() {
                 <ShieldCheck className="size-5" aria-hidden /> Call for a Free Estimate
               </span>
             </a>
+          </div>
+
+          {/* Same-day arrows pointing to the Call button */}
+          <div className="mt-4 flex items-center justify-center gap-2 sm:justify-start">
+            <CurvedArrow className="size-8 shrink-0 text-star" />
+            <span className="font-heading text-lg font-extrabold italic text-star">
+              Same-Day Service Available
+            </span>
+            <CurvedArrow className="size-8 shrink-0 -scale-x-100 text-star" />
           </div>
 
           <p className="mt-4 flex items-center justify-center gap-2 text-sm text-slate-300 sm:justify-start">

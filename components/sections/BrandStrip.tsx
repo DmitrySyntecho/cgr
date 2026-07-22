@@ -5,38 +5,47 @@ const BRAND_LOGOS = [
   "hormann", "liftmaster", "linear", "marantec", "sommer", "wayne-dalton",
 ];
 
-// Logos that are white/light and need a dark chip to be visible.
+// Logos that are white/light and need a dark chip to stay visible.
 const DARK_CHIP = new Set([
   "amarr", "wayne-dalton", "linear", "genie", "chamberlain", "marantec", "liftmaster",
 ]);
 
-export function BrandStrip() {
+function Chip({ b }: { b: string }) {
   return (
-    <section aria-labelledby="brands-heading" className="border-b border-slate-200 bg-white py-12 md:py-16">
-      <div className="container-cgr">
+    <div
+      className={`flex h-20 w-40 shrink-0 items-center justify-center rounded-2xl px-5 ${
+        DARK_CHIP.has(b) ? "bg-navy-950" : "bg-white"
+      }`}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`/images/brands/${b}.svg`}
+        alt={`${b.replace("-", " ")} garage door brand`}
+        className="max-h-10 w-auto max-w-[110px] object-contain"
+        loading="lazy"
+      />
+    </div>
+  );
+}
+
+export function BrandStrip() {
+  const row = [...BRAND_LOGOS, ...BRAND_LOGOS];
+  return (
+    <section aria-labelledby="brands-heading" className="bg-blue-primary py-14 md:py-16">
+      <div className="container-wide">
         <h2
           id="brands-heading"
-          className="text-center font-heading text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
+          className="text-center font-heading text-2xl font-extrabold tracking-tight text-white sm:text-3xl"
         >
           We Repair All Garage Door &amp; Gate Brands in <City fallback="California" />
         </h2>
+      </div>
 
-        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {BRAND_LOGOS.map((b) => (
-            <div
-              key={b}
-              className={`flex h-20 items-center justify-center rounded-2xl px-4 ring-1 ${
-                DARK_CHIP.has(b) ? "bg-navy-950 ring-navy-900" : "bg-gradient-to-b from-slate-50 to-slate-100 ring-slate-200"
-              }`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={`/images/brands/${b}.svg`}
-                alt={`${b.replace("-", " ")} garage door brand`}
-                className="max-h-10 w-auto max-w-[120px] object-contain"
-                loading="lazy"
-              />
-            </div>
+      {/* Seamless infinite marquee */}
+      <div className="mt-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+        <div className="marquee-track flex w-max items-center gap-5">
+          {row.map((b, i) => (
+            <Chip key={`${b}-${i}`} b={b} />
           ))}
         </div>
       </div>

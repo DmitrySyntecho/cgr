@@ -9,6 +9,7 @@ export function CouponPopup() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if (new URLSearchParams(window.location.search).has("nopopup")) return;
     if (sessionStorage.getItem("cgr-coupon-seen")) return;
     const t = setTimeout(() => setOpen(true), 3500);
     return () => clearTimeout(t);
