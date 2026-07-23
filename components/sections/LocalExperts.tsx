@@ -19,10 +19,10 @@ export function LocalExperts() {
         {/* Team photo — replace with the real CGR team photo */}
         <Reveal className="relative overflow-hidden rounded-[var(--radius-card)] shadow-[var(--shadow-soft)]">
           <Image
-            src="/images/team-real.webp"
+            src="/images/team-photo.jpg"
             alt="The California Garage Door Repair team"
-            width={708}
-            height={636}
+            width={1497}
+            height={1101}
             sizes="(max-width:1024px) 100vw, 50vw"
             className="h-full w-full object-cover"
           />
