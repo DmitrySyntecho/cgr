@@ -62,10 +62,10 @@ export function HowItWorks() {
             </div>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={COMPANY.phoneHref} variant="emergency">
+              <ButtonLink href={COMPANY.phoneHref} variant="emergency" className="w-full sm:w-auto">
                 <Phone className="size-[18px]" /> Call {COMPANY.phone}
               </ButtonLink>
-              <ButtonLink href="#contact" variant="primary">
+              <ButtonLink href="#contact" variant="primary" className="w-full sm:w-auto">
                 <ShieldCheck className="size-[18px]" /> Get a Free Estimate
               </ButtonLink>
             </div>

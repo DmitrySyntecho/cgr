@@ -46,7 +46,7 @@ export function LocationSearch() {
             </ul>
             <a
               href={COMPANY.phoneHref}
-              className="btn-shine btn-stroke shine-fill-red mt-7 inline-flex h-[54px] items-center justify-center gap-2 rounded-[var(--radius-btn)] font-heading text-base font-bold text-white shadow-[var(--shadow-btn-red)]"
+              className="btn-shine btn-stroke shine-fill-red mt-7 inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-[var(--radius-btn)] font-heading text-base font-bold text-white shadow-[var(--shadow-btn-red)] sm:w-auto"
             >
               <span className="relative z-[2] inline-flex items-center gap-2">
                 <Phone className="size-5" /> Call {COMPANY.phone}

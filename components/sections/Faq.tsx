@@ -27,7 +27,7 @@ export function Faq() {
           <p className="mt-4 text-slate-600">
             Still have questions? Our dispatch team is available 24/7 to help.
           </p>
-          <ButtonLink href={COMPANY.phoneHref} variant="emergency" className="mt-6">
+          <ButtonLink href={COMPANY.phoneHref} variant="emergency" className="mt-6 w-full sm:w-auto">
             <Phone className="size-[18px]" /> Call {COMPANY.phone}
           </ButtonLink>
         </div>
