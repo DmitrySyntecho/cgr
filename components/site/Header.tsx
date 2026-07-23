@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { COMPANY } from "@/lib/content";
@@ -27,8 +26,9 @@ export function Header() {
       <div className="container-wide flex h-[76px] items-center justify-between gap-4 md:h-[82px]">
         {/* Logo only */}
         <Link href="#top" className="flex shrink-0 items-center" aria-label={COMPANY.name}>
-          <span className="grid size-12 place-items-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200">
-            <Image src="/logo-cgr.png" alt={COMPANY.name} width={44} height={44} className="object-contain" />
+          <span className="flex h-14 items-center rounded-xl bg-white px-3 ring-1 ring-slate-200">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/cgr-logo.svg" alt={COMPANY.name} className="h-10 w-auto" />
           </span>
         </Link>
 

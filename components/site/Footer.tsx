@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Phone, Clock, BadgeCheck, ShieldCheck, ThumbsUp } from "lucide-react";
 import { COMPANY, FOOTER_LINKS } from "@/lib/content";
@@ -11,14 +10,9 @@ export function Footer() {
           {/* Brand + trust */}
           <div>
             <div className="flex items-center gap-3">
-              <span className="grid size-12 place-items-center rounded-xl bg-white overflow-hidden">
-                <Image src="/logo-cgr.png" alt="" width={44} height={44} className="object-contain" />
-              </span>
-              <span className="font-heading text-lg font-extrabold text-white leading-tight">
-                California Garage
-                <span className="block text-xs font-semibold text-blue-electric tracking-wide">
-                  DOOR REPAIR · CGR
-                </span>
+              <span className="flex h-16 items-center rounded-xl bg-white px-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/cgr-logo.svg" alt={COMPANY.name} className="h-12 w-auto" />
               </span>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">
