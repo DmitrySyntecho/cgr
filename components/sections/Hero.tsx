@@ -66,23 +66,28 @@ export function Hero() {
             businesses across <City fallback="California" />.
           </p>
 
-          {/* Mobile-only 15% offer — centered, compact, above the list */}
-          <CouponButton className="mx-auto mt-6 flex w-fit items-center gap-2.5 rounded-[var(--radius-btn)] border-2 border-dashed border-star/70 bg-white/5 px-3.5 py-2 backdrop-blur-sm sm:hidden">
-            <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-star/15 text-star">
-              <Tag className="size-4" aria-hidden />
-            </span>
-            <span className="text-left leading-tight">
-              <span className="block font-heading text-base font-extrabold text-star">15% OFF</span>
-              <span className="block text-[11px] font-semibold text-slate-200">Any Repair · New Customers</span>
-            </span>
-          </CouponButton>
+          {/* Mobile: bullet list (left) + 15% offer (right, matches list height) */}
+          <div className="mt-6 flex items-stretch justify-center gap-4 sm:hidden">
+            <ul className="flex flex-col items-start justify-center gap-2.5">
+              {trustRow.map(({ icon: Icon, label }) => (
+                <li key={label} className="flex items-center gap-2 text-left text-[13px] font-semibold text-white">
+                  <Icon className="size-4 shrink-0 text-success" aria-hidden /> {label}
+                </li>
+              ))}
+            </ul>
+            <CouponButton className="flex flex-col items-center justify-center rounded-[var(--radius-btn)] border-2 border-dashed border-star/70 bg-white/5 px-4 text-center backdrop-blur-sm">
+              <span className="font-heading text-xl font-extrabold leading-none text-star">15% OFF</span>
+              <span className="mt-1.5 text-xs font-semibold leading-tight text-slate-200">Any Repair</span>
+              <span className="text-xs font-semibold leading-tight text-slate-200">New Customers</span>
+            </CouponButton>
+          </div>
 
-          {/* Trust — simple list on mobile, chips from sm+ */}
-          <ul className="mt-6 flex flex-col items-center gap-2 sm:mt-7 sm:flex-row sm:flex-wrap sm:gap-2.5">
+          {/* Desktop chips */}
+          <ul className="mt-7 hidden flex-wrap gap-2.5 sm:flex">
             {trustRow.map(({ icon: Icon, label }) => (
               <li
                 key={label}
-                className="flex items-center gap-2 text-[13px] font-semibold text-white sm:rounded-full sm:bg-white/10 sm:px-3.5 sm:py-1.5 sm:ring-1 sm:ring-white/20 sm:backdrop-blur"
+                className="flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[13px] font-semibold text-white ring-1 ring-white/20 backdrop-blur"
               >
                 <Icon className="size-4 shrink-0 text-success" aria-hidden /> {label}
               </li>
