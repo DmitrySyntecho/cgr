@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone, ShieldCheck, BadgeCheck, Star, Tag } from "lucide-react";
+import { Phone, ShieldCheck, BadgeCheck, Star } from "lucide-react";
 import { COMPANY } from "@/lib/content";
 import { City } from "@/components/site/City";
 import { CouponButton } from "@/components/site/CouponButton";
@@ -95,7 +95,7 @@ export function Hero() {
           </ul>
 
           {/* CTA + framed 15% offer (desktop only offer next to the button) */}
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-start">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-stretch">
             {/* Call button + same-day strip (strip matches button width) */}
             <div className="flex flex-col gap-3">
               <a
@@ -117,14 +117,10 @@ export function Hero() {
               </div>
             </div>
 
-            <CouponButton className="group hidden h-[58px] items-center gap-3 rounded-[var(--radius-btn)] border-2 border-dashed border-star/70 bg-white/5 px-4 backdrop-blur-sm transition hover:border-star hover:bg-white/10 sm:inline-flex">
-              <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-star/15 text-star transition group-hover:scale-110">
-                <Tag className="size-5" aria-hidden />
-              </span>
-              <span className="text-left leading-tight">
-                <span className="block font-heading text-lg font-extrabold text-star">15% OFF</span>
-                <span className="block text-xs font-semibold text-slate-200">Any Repair · New Customers</span>
-              </span>
+            <CouponButton className="hidden flex-col items-center justify-center rounded-[var(--radius-btn)] border-2 border-dashed border-star/70 bg-white/5 px-7 text-center backdrop-blur-sm transition hover:border-star hover:bg-white/10 sm:flex">
+              <span className="font-heading text-2xl font-extrabold leading-none text-star">15% OFF</span>
+              <span className="mt-1.5 text-sm font-semibold leading-tight text-slate-200">Any Repair</span>
+              <span className="text-sm font-semibold leading-tight text-slate-200">New Customers</span>
             </CouponButton>
           </div>
 
